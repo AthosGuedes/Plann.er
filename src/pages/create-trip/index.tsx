@@ -84,11 +84,11 @@ export function CreateTripPage() {
                     </p>
                 </div>
 
-                <div className='space-y-4'>    
-                    <DestinationAndDateStep isGuestInputOpen={isGuestInputOpen} closeGuestInput={closeGuestInput} openGuestInput={openGuestInput}/>
-                    
+                <div className='space-y-4'>
+                    <DestinationAndDateStep isGuestInputOpen={isGuestInputOpen} closeGuestInput={closeGuestInput} openGuestInput={openGuestInput} />
+
                     {isGuestInputOpen && (
-                        <InviteGuestsStep openGuestsModal={openGuestsModal} emailsToInvite={emailsToInvite} openConfirmTripModal={openConfirmTripModal}/>
+                        <InviteGuestsStep openGuestsModal={openGuestsModal} emailsToInvite={emailsToInvite} openConfirmTripModal={openConfirmTripModal} />
                     )}
                 </div>
 
@@ -103,7 +103,7 @@ export function CreateTripPage() {
             )}
 
             {isConfirmTripModalOpen && (
-                <ConfirmTripModal closeConfirmTripModal={closeConfirmTripModal} createTrip={createTrip}/> 
+                <ConfirmTripModal closeConfirmTripModal={closeConfirmTripModal} createTrip={createTrip} />
             )}
 
         </div>

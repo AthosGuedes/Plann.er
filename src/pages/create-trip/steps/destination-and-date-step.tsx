@@ -7,7 +7,7 @@ interface DestinationAndDateStepProps {
     openGuestInput: () => void
 }
 
-export function DestinationAndDateStep({isGuestInputOpen, closeGuestInput, openGuestInput}: DestinationAndDateStepProps) {
+export function DestinationAndDateStep({ isGuestInputOpen, closeGuestInput, openGuestInput }: DestinationAndDateStepProps) {
     return (
         <div className="h-16 bg-zinc-900 px-4 p rounded-xl flex items-center shadow-shape gap-3">
             <div className='flex items-center gap-2 flex-1'>
@@ -25,7 +25,7 @@ export function DestinationAndDateStep({isGuestInputOpen, closeGuestInput, openG
             {isGuestInputOpen ? (
                 <Button onClick={closeGuestInput} variant="secondary">
                     Alterar local/data
-                    <Settings2 className='size-5'/>
+                    <Settings2 className='size-5' />
                 </Button>
             ) : (
                 <Button onClick={openGuestInput} variant="primary">

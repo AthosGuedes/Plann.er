@@ -7,7 +7,7 @@ interface InviteGuestsStepProps {
     openConfirmTripModal: () => void
 }
 
-export function InviteGuestsStep({openGuestsModal, emailsToInvite, openConfirmTripModal}: InviteGuestsStepProps) {
+export function InviteGuestsStep({ openGuestsModal, emailsToInvite, openConfirmTripModal }: InviteGuestsStepProps) {
     return (
         <div className="h-16 bg-zinc-900 px-4 p rounded-xl flex items-center shadow-shape gap-3">
             <button type='button' onClick={openGuestsModal} className='flex items-center gap-2 flex-1 text-left'>

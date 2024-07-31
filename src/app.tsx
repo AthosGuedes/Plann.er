@@ -5,17 +5,14 @@ import { TripDetailsPage } from "./pages/trip-details";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <CreateTripPage/>,
+    element: <CreateTripPage />,
   },
   {
     path: "/trips/:tripId",
-    element: <TripDetailsPage/>,
+    element: <TripDetailsPage />,
   },
 ]);
 
 export function App() {
   return <RouterProvider router={router} />
 }
-
-
- 
