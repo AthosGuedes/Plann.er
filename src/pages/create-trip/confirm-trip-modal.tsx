@@ -1,5 +1,6 @@
 import { User, X } from "lucide-react";
 import { FormEvent } from "react";
+import { Button } from "../../components/button";
 
 interface ConfirmTripModalProps {
     closeConfirmTripModal: () => void
@@ -18,7 +19,8 @@ export function ConfirmTripModal({closeConfirmTripModal, createTrip}: ConfirmTri
                         </button>
                     </div>
                     <p className='text-sm text-zinc-400'>
-                        Para concluir a criação da viagem para <span className='text-zinc-100 font-semibold'>Florianópolis, Brasil</span> nas datas de <span className='text-zinc-100 font-semibold'>16 a 27 de Agosto de 2024</span> preencha seus dados abaixo:              </p>
+                        Para concluir a criação da viagem para <span className='text-zinc-100 font-semibold'>Florianópolis, Brasil</span> nas datas de <span className='text-zinc-100 font-semibold'>16 a 27 de Agosto de 2024</span> preencha seus dados abaixo:
+                    </p>
                 </div>
 
                 <form onClick={createTrip} className='space-y-3'>
@@ -31,10 +33,9 @@ export function ConfirmTripModal({closeConfirmTripModal, createTrip}: ConfirmTri
                         <User className='text-zinc-400 size-5' />
                         <input type="email" name='email' placeholder="Seu e-mail pessoal" className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1" />
                     </div>
-
-                    <button type='submit' className='bg-lime-300 text-lime-950 w-full justify-center rounded-lg px-5 h-11 font-medium flex items-center gap-2 hover:bg-lime-400'>
+                    <Button type="submit" variant="primary" size="full">
                         Confirmar criação de viagem
-                    </button>
+                    </Button>
                 </form>
             </div>
         </div>

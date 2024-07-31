@@ -84,11 +84,9 @@ export function CreateTripPage() {
                     </p>
                 </div>
 
-                <div className='space-y-4'>
-                    <div className="h-16 bg-zinc-900 px-4 p rounded-xl flex items-center shadow-shape gap-3">
-                        <DestinationAndDateStep isGuestInputOpen={isGuestInputOpen} closeGuestInput={closeGuestInput} openGuestInput={openGuestInput}/>
-                    </div>
-
+                <div className='space-y-4'>    
+                    <DestinationAndDateStep isGuestInputOpen={isGuestInputOpen} closeGuestInput={closeGuestInput} openGuestInput={openGuestInput}/>
+                    
                     {isGuestInputOpen && (
                         <InviteGuestsStep openGuestsModal={openGuestsModal} emailsToInvite={emailsToInvite} openConfirmTripModal={openConfirmTripModal}/>
                     )}
