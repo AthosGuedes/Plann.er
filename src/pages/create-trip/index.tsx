@@ -13,12 +13,12 @@ export function CreateTripPage() {
     const [isGuestInputOpen, setIsGuestInputOpen] = useState(false)
     const [isGuestModalOpen, setIsGuestModalOpen] = useState(false)
     const [isConfirmTripModalOpen, setIsConfirmTripModalOpen] = useState(false)
-    
+
     const [destination, setDestination] = useState('')
     const [ownerName, setOwnerName] = useState('')
     const [ownerEmail, setOwnerEmail] = useState('')
     const [eventIsStartAndEndDates, setEventIsStartAndEndDates] = useState<DateRange | undefined>()
-    
+
     const [emailsToInvite, setEmailsToInvite] = useState([
         'athosgneto@gmail.com'
     ])
@@ -85,22 +85,22 @@ export function CreateTripPage() {
         console.log(ownerName)
         console.log(ownerEmail)
 
-        if(!destination) {
-            return 
+        if (!destination) {
+            return
         }
 
-        if(!eventIsStartAndEndDates?.from || !eventIsStartAndEndDates?.to) {
-            return 
+        if (!eventIsStartAndEndDates?.from || !eventIsStartAndEndDates?.to) {
+            return
         }
 
-        if(emailsToInvite.length === 0) {
-            return 
+        if (emailsToInvite.length === 0) {
+            return
         }
 
-        if(!ownerName || !ownerEmail) {
-            return 
+        if (!ownerName || !ownerEmail) {
+            return
         }
- 
+
         const response = await api.post('/trips', {
             destination,
             starts_at: eventIsStartAndEndDates?.from,

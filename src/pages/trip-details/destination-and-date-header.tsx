@@ -7,24 +7,24 @@ import { format } from "date-fns";
 
 
 interface trip {
-    id: string 
-    destination: string 
-    starts_at: string 
-    ends_at: string 
+    id: string
+    destination: string
+    starts_at: string
+    ends_at: string
     is_confirmed: boolean
 }
 
 export function DestinationAndDateHeader() {
     const { tripId } = useParams()
-    const [ trip, setTrip ] = useState<trip | undefined>()
+    const [trip, setTrip] = useState<trip | undefined>()
 
     useEffect(() => {
         api.get(`/trips/${tripId}`).then(reponse => setTrip(reponse.data.trip))
     }, [tripId])
 
-    const displayedDate = trip 
-    ? format(trip.starts_at, "d' de 'LLL").concat(' até ').concat(format(trip.ends_at, "d' de 'LLL")) 
-    : null
+    const displayedDate = trip
+        ? format(trip.starts_at, "d' de 'LLL").concat(' até ').concat(format(trip.ends_at, "d' de 'LLL"))
+        : null
 
     return (
         <div className="px-4 h-16 rounded-xl bg-zinc-900 shadow-shape flex items-center justify-between">

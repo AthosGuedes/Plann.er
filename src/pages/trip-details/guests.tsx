@@ -9,7 +9,7 @@ interface GuestsProps {
 }
 
 interface Participants {
-    id: string 
+    id: string
     name: string | null
     email: string
     is_confirmed: boolean
@@ -18,12 +18,12 @@ interface Participants {
 
 export function Guests({ openConfirmGuestModal }: GuestsProps) {
     const { tripId } = useParams()
-    const [ participants, setParticipants ] = useState<Participants[]>([])
+    const [participants, setParticipants] = useState<Participants[]>([])
 
     useEffect(() => {
         api.get(`/trips/${tripId}/participants`).then(reponse => setParticipants(reponse.data.participants))
     }, [tripId])
-    
+
     return (
         <div className="space-y-6">
             <h2 className="font-semibold text-xl">Convidados</h2>
@@ -35,7 +35,7 @@ export function Guests({ openConfirmGuestModal }: GuestsProps) {
                                 <span className="block font-medium text-zinc-100 ">{participants.name ?? `Convidado ${index}`}</span>
                                 <span className="block text-sm text-zinc-400 truncate ">{participants.email}</span>
                             </div>
-                            {participants.is_confirmed? (
+                            {participants.is_confirmed ? (
                                 <CheckCircle2 className="size-5 text-lime-300 shrink-0" />
                             ) : (
                                 <CircleDashed className="size-5 text-zinc-400 shrink-0" />

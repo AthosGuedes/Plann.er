@@ -10,23 +10,21 @@ interface CreateActivityModalProps {
 
 export function CreateActivityModal({ closeCreateActivityModal }: CreateActivityModalProps) {
     const { tripId } = useParams()
-    //const {  } = use
-    
+
     async function createActivity(event: FormEvent<HTMLFormElement>) {
         event.preventDefault
-    
+
         const data = new FormData(event.currentTarget)
-    
+
         const title = data.get('title')?.toString()
         const occurs_at = data.get('occurs_at')?.toString()
-    
+
         await api.post(`/trips/${tripId}/activities`, {
-            title, 
+            title,
             occurs_at
         })
 
         window.document.location.reload()
-        //closeCreateActivityModal()
     }
 
     return (
