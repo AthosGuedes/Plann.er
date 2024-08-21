@@ -18,11 +18,7 @@ export function CreateTripPage() {
     const [ownerName, setOwnerName] = useState('')
     const [ownerEmail, setOwnerEmail] = useState('')
     const [eventIsStartAndEndDates, setEventIsStartAndEndDates] = useState<DateRange | undefined>()
-
-    const [emailsToInvite, setEmailsToInvite] = useState([
-        'athosgneto@gmail.com'
-    ])
-
+    const [emailsToInvite, setEmailsToInvite] = useState<string[]>([])
 
     function openGuestInput() {
         setIsGuestInputOpen(true)
@@ -90,10 +86,6 @@ export function CreateTripPage() {
         }
 
         if (!eventIsStartAndEndDates?.from || !eventIsStartAndEndDates?.to) {
-            return
-        }
-
-        if (emailsToInvite.length === 0) {
             return
         }
 

@@ -1,14 +1,38 @@
 import { Mail, User, X } from "lucide-react";
 import { Button } from "../../components/button";
+import { useEffect, useState } from "react";
+import { format } from "date-fns";
+import { ptBR } from "date-fns/locale";
+import { api } from "../../lib/axios";
+import { useParams } from "react-router-dom";
+
 
 interface ConfirmGuestModalProps {
     closeConfirmGuestModal: () => void
 }
 
+interface trip {
+    id: string
+    destination: string
+    starts_at: string
+    ends_at: string
+    is_confirmed: boolean
+}
+
 export function ConfirmGuestModal({ closeConfirmGuestModal }: ConfirmGuestModalProps) {
+    const { tripId } = useParams()
+    const [trip, setTrip] = useState<trip | undefined>()
+
+    useEffect(() => {
+        api.get(`/trips/${tripId}`).then(reponse => setTrip(reponse.data.trip))
+    }, [tripId])
+    const displayedDate = trip
+        ? format(trip.starts_at, "d' de 'LLL", {locale: ptBR}).concat(' a ').concat(format(trip.ends_at, "d' de 'LLL", {locale: ptBR}))
+        : null
+
     return (
         <div className='fixed inset-0 bg-black/60 flex items-center justify-center'>
-            <div className='w-[640px] rounded-xl py-5 px-6 shadow-shape bg-zinc-900 space-y-5'>
+            <div className='w-[540px] rounded-xl py-5 px-6 shadow-shape bg-zinc-900 space-y-5'>
                 <div className='space-y-2'>
                     <div className='flex items-center justify-between'>
                         <h2 className='text-lg font-semibold'>Confirmar participação</h2>
@@ -17,7 +41,7 @@ export function ConfirmGuestModal({ closeConfirmGuestModal }: ConfirmGuestModalP
                         </button>
                     </div>
                     <p className='text-sm text-zinc-400'>
-                        Você foi convidado(a) para participar de uma viagem para <span className='text-zinc-100 font-semibold'>Florianópolis, Brasil</span> nas datas de <span className='text-zinc-100 font-semibold'>16 a 27 de Agosto de 2024</span>. <br /> <br />
+                        Você foi convidado(a) para participar de uma viagem para <span className='text-zinc-100 font-semibold'>{trip?.destination}</span> nas datas de <span className='text-zinc-100 font-semibold'>{displayedDate}</span>. <br /> <br />
                         Para confirmar sua presença na viagem, preencha os dados abaixo:
                     </p>
                 </div>

@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom"
 import { api } from "../../lib/axios";
 import { useEffect, useState } from "react";
 import { format } from "date-fns";
+import { ptBR } from "date-fns/locale"
+
 
 
 interface trip {
@@ -23,7 +25,7 @@ export function DestinationAndDateHeader() {
     }, [tripId])
 
     const displayedDate = trip
-        ? format(trip.starts_at, "d' de 'LLL").concat(' até ').concat(format(trip.ends_at, "d' de 'LLL"))
+        ? format(trip.starts_at, "d' de 'LLL", {locale: ptBR}).concat(' até ').concat(format(trip.ends_at, "d' de 'LLL", {locale: ptBR}))
         : null
 
     return (

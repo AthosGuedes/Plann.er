@@ -3,6 +3,7 @@ import { Button } from "../../../components/button";
 import { useState } from "react";
 import { DateRange, DayPicker } from "react-day-picker";
 import { format } from "date-fns";
+import { ptBR } from "date-fns/locale"
 import "react-day-picker/style.css";
 
 
@@ -27,7 +28,7 @@ export function DestinationAndDateStep({ isGuestInputOpen, closeGuestInput, open
     }
 
     const displayedDate = eventIsStartAndEndDates && eventIsStartAndEndDates.from && eventIsStartAndEndDates.to
-        ? format(eventIsStartAndEndDates.from, "d' de 'LLL").concat(' até ').concat(format(eventIsStartAndEndDates.to, "d' de 'LLL"))
+        ? format(eventIsStartAndEndDates.from, "d' de 'LLL", { locale: ptBR }).concat(' até ').concat(format(eventIsStartAndEndDates.to, "d' de 'LLL", { locale: ptBR }))
         : null
 
     return (
@@ -37,7 +38,7 @@ export function DestinationAndDateStep({ isGuestInputOpen, closeGuestInput, open
                 <input disabled={isGuestInputOpen} type="text" placeholder="Para onde você vai?" className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1" onChange={event => setDestination(event.target.value)} />
             </div>
 
-            <button onClick={openDataPicker} disabled={isGuestInputOpen} className='flex items-center gap-2 text-left w-[240px]'>
+            <button onClick={openDataPicker} disabled={isGuestInputOpen} className='flex items-center gap-2 text-left w-[245px]'>
                 <Calendar className='size-5 text-zinc-400' />
                 <span className=" text-lg text-zinc-400 w-40 flex-1">
                     {displayedDate || 'Quando?'}
