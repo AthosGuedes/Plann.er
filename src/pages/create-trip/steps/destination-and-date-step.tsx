@@ -6,6 +6,7 @@ import { format } from "date-fns";
 import { ptBR } from "date-fns/locale"
 import "react-day-picker/style.css";
 
+//import { getDefaultClassNames } from "react-day-picker";
 
 interface DestinationAndDateStepProps {
     isGuestInputOpen: boolean
@@ -31,6 +32,8 @@ export function DestinationAndDateStep({ isGuestInputOpen, closeGuestInput, open
         ? format(eventIsStartAndEndDates.from, "d' de 'LLL", { locale: ptBR }).concat(' até ').concat(format(eventIsStartAndEndDates.to, "d' de 'LLL", { locale: ptBR }))
         : null
 
+    //const defaultClassNames = getDefaultClassNames();
+
     return (
         <div className="h-16 bg-zinc-900 px-4 p rounded-xl flex items-center shadow-shape gap-3">
             <div className='flex items-center gap-2 flex-1'>
@@ -50,14 +53,26 @@ export function DestinationAndDateStep({ isGuestInputOpen, closeGuestInput, open
                     <div className='rounded-xl py-5 px-6 shadow-shape bg-zinc-900 space-y-5'>
                         <div className='space-y-2'>
                             <div className='flex items-center justify-between'>
-                                <h2 className='text-lg font-semibold'>Selecione a data da viagem</h2>
+                                <h2 className='text-lg font-'>Selecione a data da viagem.</h2>
                                 <button type='button' onClick={closeDataPicker}>
-                                    <X className='size-5 text-zinc-400' />
+                                    <X className='rounded size-5 text-zinc-400' />
                                 </button>
                             </div>
                         </div>
 
-                        <DayPicker mode="range" selected={eventIsStartAndEndDates} onSelect={setEventIsStartAndEndDates} />
+                        <DayPicker
+                        locale={ptBR}
+                        classNames={{
+                            caption_label: `bg-zinc-900 font-normal`,
+                            today: `text-lime-300 font-semibold`,
+                            range_start: `rounded-l-full bg-lime-300 text-zinc-900 font-bold`,
+                            range_end: `rounded-r-full bg-lime-300 text-zinc-900 font-bold`, 
+                            selected: `bg-lime-300 text-zinc-900 font-bold`,
+                            chevron: `fill-lime-300`
+                        }} 
+                        mode="range" selected={eventIsStartAndEndDates} onSelect={setEventIsStartAndEndDates} />
+
+                        <p className="text-sm text-zinc-400">Data selecionada: <span className="text-base text-zinc-100 font-semibold">{displayedDate}</span></p>
                     </div>
                 </div>
             )}
