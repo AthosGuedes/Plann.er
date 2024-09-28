@@ -6,8 +6,6 @@ import { format } from "date-fns";
 import { ptBR } from "date-fns/locale"
 import "react-day-picker/style.css";
 
-//import { getDefaultClassNames } from "react-day-picker";
-
 interface DestinationAndDateStepProps {
     isGuestInputOpen: boolean
     eventIsStartAndEndDates: DateRange | undefined
@@ -32,8 +30,6 @@ export function DestinationAndDateStep({ isGuestInputOpen, closeGuestInput, open
         ? format(eventIsStartAndEndDates.from, "d' de 'LLL", { locale: ptBR }).concat(' até ').concat(format(eventIsStartAndEndDates.to, "d' de 'LLL", { locale: ptBR }))
         : null
 
-    //const defaultClassNames = getDefaultClassNames();
-
     return (
         <div className="h-16 bg-zinc-900 px-4 p rounded-xl flex items-center shadow-shape gap-3">
             <div className='flex items-center gap-2 flex-1'>
@@ -50,7 +46,7 @@ export function DestinationAndDateStep({ isGuestInputOpen, closeGuestInput, open
 
             {isDatePickerOpen && (
                 <div className='fixed inset-0 bg-black/60 flex items-center justify-center'>
-                    <div className='rounded-xl py-5 px-6 shadow-shape bg-zinc-900 space-y-5'>
+                    <div className='rounded-xl py-5 px-7 shadow-shape bg-zinc-900 space-y-7'>
                         <div className='space-y-2'>
                             <div className='flex items-center justify-between'>
                                 <h2 className='text-lg font-'>Selecione a data da viagem.</h2>

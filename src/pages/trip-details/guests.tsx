@@ -33,7 +33,7 @@ export function Guests({ openConfirmGuestModal }: GuestsProps) {
                         <div key={participants.id} className="flex items-center justify-between gab-4">
                             <div className="space-y-1.5">
                                 <span className="block font-medium text-zinc-100 ">{participants.name ?? `Convidado ${index}`}</span>
-                                <span className="block text-sm text-zinc-400 truncate ">{participants.email}</span>
+                                <span className="block text-sm text-zinc-400 truncate ">{participants.email}</span>                          
                             </div>
                             {participants.is_confirmed ? (
                                 <CheckCircle2 className="size-5 text-lime-300 shrink-0" />
